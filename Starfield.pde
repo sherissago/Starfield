@@ -1,15 +1,3 @@
-NormalParticle drcmlf;
-void setup()
-{
-  size(500,500);
-}
-
-void draw()
-{
-  background(0);
-  drcmlf = new NormalParticle(250,250);
-  drcmlf.show();
-  drcmlf.move();
 }
 
 class NormalParticle
@@ -21,8 +9,8 @@ class NormalParticle
   {
     npX = x;
     npY = y;
-    speed = x + 30;
-    angle = Math.PI * Math.random()*3;
+    speed = Math.random()*11;
+    angle = Math.PI * (Math.random()*3);
     npColor = color(255);
   }
  
@@ -30,7 +18,7 @@ class NormalParticle
   public void move()
   {
     npX = npX + Math.cos(angle)* speed;
-    npY = npY + Math.cos(angle) * speed;
+    npY = npY + Math.sin(angle) * speed;
   }
   
   
@@ -38,5 +26,34 @@ class NormalParticle
  {
    fill(255);
    ellipse((float)npX,(float)npY,3,3);
+ }
+}
+
+class Jumbo
+{
+  double jX, jY, speed, angle;
+  int jColor;
+  
+  Jumbo(int x, int y)
+  {
+    jX = x;
+    jY = y;
+    speed = Math.random()*11;
+    angle = Math.PI * (Math.random()*3);
+    jColor = color(255);
+  }
+  
+   public void move()
+  {
+    jX = jX + Math.cos(angle)* speed;
+    jY = jY + Math.sin(angle) * speed;
+  }
+  
+  
+ public void show()
+ {
+   fill(255);
+   textSize(30);
+   text("I DON'T CARE",(float)jX,(float)jY);
  }
 }
