@@ -1,4 +1,5 @@
 NormalParticle [] drcmlf;
+Oddball hrptr;
 
 void setup()
 {
@@ -25,6 +26,7 @@ void draw()
     drcmlf[i].show();
     drcmlf[i].move();
   }
+
 }
 
 
@@ -56,6 +58,18 @@ class NormalParticle implements Particle
    fill(255);
    ellipse((float)npX,(float)npY,3,3);
  }
+}
+
+class Oddball implements Particle
+{
+  void show()
+  {
+    ellipse((float)Math.random()*500, (float)Math.random()* 500,30,30);
+  }
+  
+  void move()
+  {
+  }
 }
 
 /*class Jumbo extends NormalParticle
