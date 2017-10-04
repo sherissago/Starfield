@@ -1,4 +1,27 @@
+NormalParticle [] drcmlf;
+
+void setup()
+{
+
+  size(500,500);
+  drcmlf = new NormalParticle[500];
+  for (int i = 0; i < drcmlf.length; i++)
+  {
+    drcmlf[i] = new NormalParticle(250,250);
+  }
 }
+
+void draw()
+{
+   background(0);
+  for(int i = 0; i < drcmlf.length; i++)
+  {
+    drcmlf[i].show();
+    drcmlf[i].move();
+  }
+}
+
+
 
 class NormalParticle
 {
@@ -29,31 +52,12 @@ class NormalParticle
  }
 }
 
-class Jumbo
+/*class Jumbo extends NormalParticle
 {
-  double jX, jY, speed, angle;
-  int jColor;
-  
-  Jumbo(int x, int y)
-  {
-    jX = x;
-    jY = y;
-    speed = Math.random()*11;
-    angle = Math.PI * (Math.random()*3);
-    jColor = color(255);
-  }
-  
-   public void move()
-  {
-    jX = jX + Math.cos(angle)* speed;
-    jY = jY + Math.sin(angle) * speed;
-  }
-  
-  
- public void show()
+ 
+ void show()
  {
    fill(255);
-   textSize(30);
-   text("I DON'T CARE",(float)jX,(float)jY);
+   ellipse((float)npX,(float)npY,40,40);
  }
-}
+}*/
