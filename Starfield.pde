@@ -11,6 +11,12 @@ void setup()
   }
 }
 
+interface Particle
+{
+  public void show();
+  public void move();
+}
+
 void draw()
 {
    background(0);
@@ -23,7 +29,7 @@ void draw()
 
 
 
-class NormalParticle
+class NormalParticle implements Particle
 {
   double npX, npY, speed, angle;
   int npColor;
