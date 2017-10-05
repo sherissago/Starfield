@@ -10,7 +10,7 @@ void setup()
   {
     drcmlf[i] = new NormalParticle(250,250);
   }
-  hrptr = new Oddball();
+  hrptr = new Oddball(20,20);
 }
 
 interface Particle
@@ -64,17 +64,24 @@ class NormalParticle implements Particle
 
 class Oddball implements Particle
 {
+  int oddX, oddY;
+  Oddball(int x, int y)
+  {
+     oddX = x;
+     oddY = y;
+  }
+ 
   public void show()
   {
-    int oddX = 0;
-    int oddY = 0;
-    fill(255);
-    
-    ellipse((float)Math.random()*500, (float)Math.random()*500, 30, 30);
+    ellipse((float)oddX, (float)oddY, 20,20);
+   
   }
   
   public void move()
   {
+    oddX = oddX + (int)(Math.random()*3);
+    oddY = oddY + (int)(Math.random()*3);
+  
   }
 }
 
@@ -87,3 +94,4 @@ class Oddball implements Particle
    ellipse((float)npX,(float)npY,40,40);
  }
 }*/
+
