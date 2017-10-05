@@ -73,16 +73,23 @@ class Oddball implements Particle
  
   public void show()
   {
+    fill(240,120,0);
     ellipse((float)oddX, (float)oddY, 20,20);
    
   }
   
   public void move()
   {
-    oddX = oddX + (int)(Math.random()*3);
-    oddY = oddY + (int)(Math.random()*3);
-  
-  }
+    
+    oddX = oddX + 15;
+    oddY = oddY + 15;
+    
+    if (oddY > 2000 && oddX > 2000)
+    {
+      oddX =0;
+      oddY = 0;
+    }
+}
 }
 
 /*class Jumbo extends NormalParticle
@@ -94,4 +101,3 @@ class Oddball implements Particle
    ellipse((float)npX,(float)npY,40,40);
  }
 }*/
-
