@@ -1,5 +1,5 @@
 Particle [] nParticle;
-Particle oddPart;
+Particle [] oddPart;
 Particle [] jumbo;
 
 void setup()
@@ -8,12 +8,11 @@ void setup()
   size(500, 500);
   nParticle = new NormalParticle[1000];
   int i;
-  for  (i = 0; i < nParticle.length; i++)
+  for (i = 0; i < nParticle.length; i++)
   {
-    nParticle[i] = new NormalParticle(250, 250);
+    nParticle[i] = new NormalParticle();
+    oddPart[1]= new Oddball();
   }
-
-  oddPart = new Oddball(250, 250);
 }
 
 interface Particle
@@ -30,8 +29,8 @@ void draw()
     nParticle[i].show();
     nParticle[i].move();
   }
-  oddPart.show();
-  oddPart.move();
+  oddPart[1].show();
+  oddPart[1].move();
 }
 
 
@@ -40,16 +39,15 @@ class NormalParticle implements Particle
 {
   double npX, npY, speed, angle;
   int npColor;
-
-  NormalParticle(int x, int y)
+  
+  NormalParticle()
   {
-    npX = x;
-    npY = y;
+    npX = 250;
+    npY = 250;
     speed = Math.random()*11;
     angle = Math.PI * (Math.random()*3);
     npColor = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
   }
-
 
   public void move()
   {
@@ -68,10 +66,10 @@ class NormalParticle implements Particle
 class Oddball implements Particle
 {
   int oddX, oddY;
-  Oddball(int x, int y)
+  Oddball()
   {
-    oddX = x;
-    oddY = y;
+    oddX = 250;
+    oddY = 250;
   }
 
   public void show()
@@ -88,11 +86,10 @@ class Oddball implements Particle
   }
 }
 
-/*class Jumbo extends NormalParticle
+class Jumbo extends NormalParticle
 {
-
   public void show()
   {
-    ellipse((float)npX, (float)npY, 50, 50);
+    ellipse((float)npX, (float)npY, 70, 70);
   }
-}*/
+}
