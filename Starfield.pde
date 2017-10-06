@@ -1,16 +1,19 @@
-NormalParticle [] drcmlf;
-Oddball hrptr;
+Particle [] drcmlf;
+Particle hrptr;
+Particle [] jumbo;
 
 void setup()
 {
 
   size(500,500);
-  drcmlf = new NormalParticle[500];
-  for (int i = 0; i < drcmlf.length; i++)
+  drcmlf = new NormalParticle[1000];
+  int i;
+  for  (i = 0; i < drcmlf.length; i++)
   {
     drcmlf[i] = new NormalParticle(250,250);
   }
-  hrptr = new Oddball(20,20);
+  
+  hrptr = new Oddball(250,250);
 }
 
 interface Particle
@@ -21,7 +24,7 @@ interface Particle
 
 void draw()
 {
-   background(0);
+   background(205,255,209);
   for(int i = 0; i < drcmlf.length; i++)
   {
     drcmlf[i].show();
@@ -38,13 +41,13 @@ class NormalParticle implements Particle
   double npX, npY, speed, angle;
   int npColor;
   
-  NormalParticle(int x, int y)
+NormalParticle(int x, int y)
   {
     npX = x;
     npY = y;
     speed = Math.random()*11;
     angle = Math.PI * (Math.random()*3);
-    npColor = color(255);
+    npColor = color((int)(Math.random()*200), (int)(Math.random()*70),(int)(Math.random()*30));
   }
  
   
@@ -57,8 +60,8 @@ class NormalParticle implements Particle
   
  public void show()
  {
-   fill(255);
-   ellipse((float)npX,(float)npY,3,3);
+   fill(npColor);
+   ellipse((float)npX,(float)npY,30,30);
  }
 }
 
@@ -74,30 +77,25 @@ class Oddball implements Particle
   public void show()
   {
     fill(240,120,0);
-    ellipse((float)oddX, (float)oddY, 20,20);
+    ellipse((float)oddX, (float)oddY, 30,30);
    
   }
   
   public void move()
   {
     
-    oddX = oddX + 15;
-    oddY = oddY + 15;
+    oddX = oddX + (int)(Math.random()*10)-4;
+    oddY = oddY + (int)(Math.random()*10)-4;
     
-    if (oddY > 2000 && oddX > 2000)
-    {
-      oddX =0;
-      oddY = 0;
-    }
 }
 }
 
-/*class Jumbo extends NormalParticle
+class Jumbo extends NormalParticle
 {
- 
- void show()
- {
-   fill(255);
-   ellipse((float)npX,(float)npY,40,40);
- }
-}*/
+  
+  public void show()
+  {
+    ellipse((float)npX, (float)npY, 50,50);
+  }
+
+}
