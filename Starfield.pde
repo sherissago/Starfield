@@ -6,12 +6,13 @@ void setup()
 {
 
   size(500, 500);
-  nParticle = new NormalParticle[1000];
+  nParticle = new Particle[1000];
   int i;
   for (i = 0; i < nParticle.length; i++)
   {
     nParticle[i] = new NormalParticle();
-    oddPart[1]= new Oddball();
+    nParticle[1]= new Oddball(250,250);
+    nParticle[2] = new Jumbo();
   }
 }
 
@@ -29,8 +30,10 @@ void draw()
     nParticle[i].show();
     nParticle[i].move();
   }
-  oddPart[1].show();
-  oddPart[1].move();
+  nParticle[1].show();
+  nParticle[1].move();
+  nParticle[2].show();
+  nParticle[2].move();
 }
 
 
@@ -60,16 +63,19 @@ class NormalParticle implements Particle
   {
     fill(npColor);
     ellipse((float)npX, (float)npY, 40, 40);
+    fill(0);
+    ellipse((float)npX-5, (float)npY, 5,5);
+    ellipse((float)npX+5, (float)npY, 5,5);
   }
 }
 
 class Oddball implements Particle
 {
   int oddX, oddY;
-  Oddball()
+   Oddball(int x, int y)
   {
-    oddX = 250;
-    oddY = 250;
+    oddX = x;
+    oddY = y;
   }
 
   public void show()
@@ -90,6 +96,10 @@ class Jumbo extends NormalParticle
 {
   public void show()
   {
-    ellipse((float)npX, (float)npY, 70, 70);
+    ellipse((float)npX, (float)npY, 100, 100);
+    fill(0);
+    ellipse((float)npX-20, (float)npY, 20,20);
+    ellipse((float)npX+20, (float)npY, 20,20);
+    noFill();
   }
 }
